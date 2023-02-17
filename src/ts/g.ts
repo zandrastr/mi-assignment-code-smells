@@ -42,23 +42,73 @@ console.log(getStudentStatus({name: "Sebastian", handedInOnTime: true, passed: f
   Det finns flera code smells att identifiera här. Vissa är lurigare än andra.
   */
 
-class Temp {
-  constructor(public q: string, public where: Date, public v: number) {}
-}
-
-function averageWeeklyTemperature(heights: Temp[]) {
-  let r = 0;
-
-  for (let who = 0; who < heights.length; who++) {
-    if (heights[who].q === "Stockholm") {
-      if (heights[who].where.getTime() > Date.now() - 604800000) {
-        r += heights[who].v;
-      }
-    }
+  class dailyTemperatures {
+    constructor(public city: string, public date: Date, public celsius: number) {}
   }
 
-  return r / 7;
-}
+  const listOfWeatherData = [
+    {
+      city: "Stockholm",
+      date: new Date (2023,2,11),
+      celsius: 8
+    },
+    {
+      city: "Stockholm",
+      date: new Date (2023,2,12),
+      celsius: 10
+    },
+    {
+      city: "Stockholm",
+      date: new Date (2023,2,13),
+      celsius: 11
+    },
+    {
+      city: "Stockholm",
+      date: new Date (2023,2,14),
+      celsius: 22
+    },
+    {
+      city: "Stockholm",
+      date: new Date (2023,2,15),
+      celsius: 5
+    },
+    {
+      city: "Stockholm",
+      date: new Date (2023,2,16),
+      celsius: 12
+    },
+    {
+      city: "Stockholm",
+      date: new Date (2023,2,17),
+      celsius: 14
+    }
+  ];
+  
+  let ONE_WEEK_MILLISECONDS = 604800000;
+  let ONE_WEEK_AGO = Date.now() - ONE_WEEK_MILLISECONDS;
+  
+  function getAverageTemperature(weatherData: dailyTemperatures[]) {
+    
+    let numberOfDays = weatherData.length;
+  
+    let sumOfTemperatures = 0;
+  
+    for (let i = 0; i < weatherData.length; i++) {
+
+      if (weatherData[i].city === "Stockholm") {
+
+        if (weatherData[i].date.getTime() > ONE_WEEK_AGO) {
+
+          sumOfTemperatures += weatherData[i].celsius;
+
+        }
+      }
+    }
+  
+    return sumOfTemperatures / numberOfDays; 
+  }
+
+  console.log(getAverageTemperature(listOfWeatherData));
 
 /*
   4. Följande funktion kommer att presentera ett objekt i dom:en. 
