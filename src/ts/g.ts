@@ -106,7 +106,7 @@ console.log(getStudentStatus({name: "Sebastian", handedInOnTime: true, passed: f
     }
   
     return sumOfTemperatures / numberOfDays; 
-  }
+  };
 
   console.log(getAverageTemperature(listOfWeatherData));
 
@@ -115,28 +115,39 @@ console.log(getStudentStatus({name: "Sebastian", handedInOnTime: true, passed: f
   Se om du kan göra det bättre. Inte bara presentationen räknas, även strukturer.
   */
 
-function showProduct(
-  name: string,
-  price: number,
-  amount: number,
-  description: string,
-  image: string,
-  parent: HTMLElement
-) {
-  let container = document.createElement("div");
-  let title = document.createElement("h4");
-  let pris = document.createElement("strong");
-  let imageTag = document.createElement("img");
+class Product {
+  constructor(
+    public name: string,
+    public price: number,
+    public description: string,
+    public imageUrl: string,
+  ) {}
+};
 
-  title.innerHTML = name;
-  pris.innerHTML = price.toString();
-  imageTag.src = image;
+const newProduct = new Product ("Product Name", 129, "Description", "image.url");
 
-  container.appendChild(title);
-  container.appendChild(imageTag);
-  container.appendChild(pris);
-  parent.appendChild(container);
-}
+function showProduct(product: Product) {
+
+  let productContainer = document.createElement("div");
+  let name = document.createElement("h4");
+  let price = document.createElement("p");
+  let description = document.createElement("p");
+  let image = document.createElement("img");
+
+  productContainer.append(name);
+  productContainer.append(price);
+  productContainer.append(description);
+  productContainer.append(image);
+  document.body.append(productContainer);
+
+  name.innerHTML = product.name;
+  price.innerHTML = product.price.toString();
+  description.innerHTML = product.description;
+  image.src = product.imageUrl;
+};
+
+console.log(showProduct(newProduct));
+
 
 /*
   5. Följande funktion kommer presentera studenter. Men det finns ett antal saker som 
