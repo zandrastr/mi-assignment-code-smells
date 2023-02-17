@@ -29,6 +29,27 @@ console.log(getSumOfJumpLengths([5,3,2]));
   2. I detta exempel har vi fokuserat på if-statements. Se om du kan göra exemplet bättre!
   */
 
+// class Student {
+//   constructor(
+//     public name: string,
+//     public handedInOnTime: boolean,
+//     public passed: boolean
+//   ) {}
+// }
+
+// function getStudentStatus(student: Student): string {
+
+//   student.passed = student.name == "Sebastian" ? student.handedInOnTime ? true : false : false;
+
+//   if (student.passed) {
+//     return "VG";
+//   } else {
+//     return "IG";
+//   }
+// }
+
+// console.log(getStudentStatus({name: "Sebastian", handedInOnTime: true, passed: false}));
+
 class Student {
   constructor(
     public name: string,
@@ -38,19 +59,16 @@ class Student {
 }
 
 function getStudentStatus(student: Student): string {
-  student.passed =
-    student.name == "Sebastian"
-      ? student.handedInOnTime
-        ? true
-        : false
-      : false;
 
-  if (student.passed) {
-    return "VG";
-  } else {
-    return "IG";
-  }
-}
+  if (student.name == "Sebastian") {
+    student.passed = student.handedInOnTime ? true : false;
+  };
+
+  return student.passed ? "VG" : "IG";
+
+};
+
+console.log(getStudentStatus({name: "Sebastian", handedInOnTime: true, passed: false}));
 
 /*
   3. Variabelnamn är viktiga. Kika igenom följande kod och gör om och rätt.
