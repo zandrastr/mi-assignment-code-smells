@@ -148,34 +148,49 @@ function showProduct(product: Product) {
 
 console.log(showProduct(newProduct));
 
-
 /*
   5. Följande funktion kommer presentera studenter. Men det finns ett antal saker som 
   går att göra betydligt bättre. Gör om så många som du kan hitta!
   */
-function presentStudents(students: Student[]) {
-  for (const student of students) {
-    if (student.handedInOnTime) {
-      let container = document.createElement("div");
-      let checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = true;
 
-      container.appendChild(checkbox);
-      let listOfStudents = document.querySelector("ul#passedstudents");
-      listOfStudents?.appendChild(container);
-    } else {
-      let container = document.createElement("div");
-      let checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = false;
-
-      container.appendChild(checkbox);
-      let listOfStudents = document.querySelector("ul#failedstudents");
-      listOfStudents?.appendChild(container);
-    }
+const listOfStudents = [
+  {
+    name: "Student A",
+    handedInOnTime: true,
+    passed: true
+  },
+  {
+    name: "Student B",
+    handedInOnTime: false,
+    passed: false
   }
-}
+];
+
+function presentStudents(students: Student[]) {
+
+  students.forEach(student => {
+
+    let container = document.createElement("div");
+    let studentName = document.createElement("p");
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    studentName.innerHTML = student.name;
+    container.append(checkbox);
+    container.append(studentName);
+
+    if (student.handedInOnTime) {
+      checkbox.checked = true;
+      let listOfStudents = document.querySelector("ul#passedstudents");
+      listOfStudents?.append(container);
+    } else {
+      checkbox.checked = false;
+      let listOfStudents = document.querySelector("ul#failedstudents");
+      listOfStudents?.append(container);
+    }
+  });
+};
+
+console.log(presentStudents(listOfStudents));
 
 /*
   6. Skriv en funktion som skall slå ihop följande texter på ett bra sätt:
