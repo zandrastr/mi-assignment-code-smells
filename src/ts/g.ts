@@ -4,15 +4,26 @@
   dessa hopplängder.
   */
 
-function getLength(jumpings: number[]): number {
-  let totalNumber = 0;
+// function getLength(jumpings: number[]): number {
+//   let totalNumber = 0;
 
-  totalNumber = jumpings.reduce(
-    (jumpDistanceSoFar, currentJump) => jumpDistanceSoFar + currentJump
-  );
+//   totalNumber = jumpings.reduce(
+//     (jumpDistanceSoFar, currentJump) => jumpDistanceSoFar + currentJump
+//   );
 
-  return totalNumber;
-}
+//   return totalNumber;
+// }
+
+// console.log(getLength([5,3,2]));
+
+function getSumOfJumpLengths(jumpLengths: number[]): number {
+
+  return jumpLengths.reduce((jumpLengthSoFar, currentJumpLength) => 
+  jumpLengthSoFar + currentJumpLength);
+
+};
+
+console.log(getSumOfJumpLengths([5,3,2]));
 
 /*
   2. I detta exempel har vi fokuserat på if-statements. Se om du kan göra exemplet bättre!
