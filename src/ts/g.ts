@@ -213,23 +213,32 @@ console.log(concatenateStrings());
     fler och fler parametrar behöver läggas till? T.ex. avatar eller adress. Hitta en bättre
     lösning som är hållbar och skalar bättre. 
 */
-function createUser(
-  name: string,
-  birthday: Date,
-  email: string,
-  password: string
-) {
-  // Validation
 
-  let ageDiff = Date.now() - birthday.getTime();
+class User {
+  constructor(
+    public name: string,
+    public birthday: Date,
+    public email: string,
+    public password: string
+  ) {}
+};
+
+const newUser: User = new User ("User Name", new Date (2015,1,1), "email@email.se", "abc123");
+
+function userAgeControl(user: User) {
+  
+  // Validation
+  let ageDiff = Date.now() - user.birthday.getTime();
   let ageDate = new Date(ageDiff);
   let userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
 
   console.log(userAge);
 
-  if (!(userAge < 20)) {
-    // Logik för att skapa en användare
-  } else {
+  if (userAge < 20) {
     return "Du är under 20 år";
+  } else {
+    // Logik för att skapa en användare
   }
 }
+
+console.log(userAgeControl(newUser));
