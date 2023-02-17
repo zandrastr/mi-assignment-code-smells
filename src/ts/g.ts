@@ -4,18 +4,6 @@
   dessa hopplängder.
   */
 
-// function getLength(jumpings: number[]): number {
-//   let totalNumber = 0;
-
-//   totalNumber = jumpings.reduce(
-//     (jumpDistanceSoFar, currentJump) => jumpDistanceSoFar + currentJump
-//   );
-
-//   return totalNumber;
-// }
-
-// console.log(getLength([5,3,2]));
-
 function getSumOfJumpLengths(jumpLengths: number[]): number {
 
   return jumpLengths.reduce((jumpLengthSoFar, currentJumpLength) => 
@@ -28,27 +16,6 @@ console.log(getSumOfJumpLengths([5,3,2]));
 /*
   2. I detta exempel har vi fokuserat på if-statements. Se om du kan göra exemplet bättre!
   */
-
-// class Student {
-//   constructor(
-//     public name: string,
-//     public handedInOnTime: boolean,
-//     public passed: boolean
-//   ) {}
-// }
-
-// function getStudentStatus(student: Student): string {
-
-//   student.passed = student.name == "Sebastian" ? student.handedInOnTime ? true : false : false;
-
-//   if (student.passed) {
-//     return "VG";
-//   } else {
-//     return "IG";
-//   }
-// }
-
-// console.log(getStudentStatus({name: "Sebastian", handedInOnTime: true, passed: false}));
 
 class Student {
   constructor(
